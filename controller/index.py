@@ -7,25 +7,16 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
-from pycket.session import SessionManager
 
 
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
-        session = SessionManager(self)
         #########################################################################
         # id = self.application.db.entry.find_one({"_id": 434344})
         # GlobalVars = self.application.GlobalVar
         ####################################################################
-        # if session.get("LoggedIn","No") != "No" :
-        #     session.set('info', {"Ln":"Alavi","Fn":"ali"})
-        #     session.set('_id','1233444')
         self.render('index.html',UN="U Are Already Logged In..")#Global =GlobalVars)
-        #
-        # else :
-        #     session.set('LoggedIn', {"_id":"12222222","name":"ali"})
-        #     self.render('index.html',UN="U Are Not Logged In..")#,Global = self.application.GlobalVar)
 
 
 

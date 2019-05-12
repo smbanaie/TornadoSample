@@ -1,25 +1,105 @@
 <!DOCTYPE html>
 <html>
-<head><title>Poem Maker Pro</title>
+<head><title>Ebay Sandbox Tester</title>
 <link href='{{ static_url("css/bootstrap.css") }}' rel="stylesheet">
 <link href='{{ static_url("css/bootstrap-theme.css") }}' rel="stylesheet">
-    <link href='{{ static_url("css/dropzone.css") }}' rel="stylesheet">
+  <link href='{{ static_url("css/dropzone.css") }}' rel="stylesheet">
 
 </head>
 <body>
-<h1 class="">Enter terms below. - {{ UN}}</h1>
-
+<br/>
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <form method="post" action="/poem" class="form-group dropzone">
-            <p>Plural noun<br><input type="text" name="noun1" class="form-control"></p>
-            <p>Singular noun<br><input type="text" name="noun2" class="form-control"></p>
-            <p>Verb (past tense)<br><input type="text" name="verb" class="form-control"></p>
-            <p>Noun<br><input type="text" name="noun3" class="form-control"></p>
-            <input type="submit" class="btn btn-success">
-        </form>
+<h3 class="col-md-8 col-md-offset-2">Enter Product info :</h3>
+  </div>
+
+
+<div class="row col-md-8 col-md-offset-2">
+<form class="form-group" method="post" action="/addItem">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputTitle">Title</label>
+      <input type="text" class="form-control" id="inputTitle" name="inputTitle" placeholder="Title">
     </div>
+    <div class="form-group col-md-6">
+      <label for="inputCondition">State</label>
+      <select id="inputCondition" class="form-control" name="inputCondition">
+        <option value="1000" selected>Brand New</option>
+        <option value="3000">Used</option>
+        <option value="4000">Very Good</option>
+        <option value="3000">Good</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group col-md-12">
+    <label for="inputDescription">Description</label>
+    <input type="text" class="form-control" id="inputDescription" name="inputDescription" placeholder="describe the product">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputListingType">Listing Type</label>
+      <select id="inputListingType" name ="inputListingType" class="form-control">
+        <option  selected>FixedPriceItem</option>
+        <option >Auction</option>
+        <option >Chinese</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPayPalEmailAddress">PayPal Email Address</label>
+      <input type="email" class="form-control" id="inputPayPalEmailAddress" name="inputPayPalEmailAddress">
+    </div>
+    </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputPrimaryCategory">PrimaryCategory</label>
+      <select id="inputPrimaryCategory" name="inputPrimaryCategory" class="form-control">
+        <option  value="377" selected>Books</option>
+        <option value="20713">Fridges</option>
+        <option >...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputQuantity">Quantity</label>
+      <input type="number" class="form-control" id="inputQuantity" name="inputQuantity">
+    </div>
+    </div>
+
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputManufacturer">Manufacturer</label>
+      <input type="text" id="inputManufacturer" name="inputManufacturer" class="form-control">
+
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputBtrand">Brand</label>
+      <input type="text" class="form-control" id="inputBtrand" name="inputBtrand">
+    </div>
+    </div>
+
+      <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputPrice">Start Price</label>
+      <input type="text" id="inputPrice" name="inputPrice" class="form-control">
+
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputCurrency">Currency</label>
+      <input type="text" class="form-control" id="inputCurrency" name="inputCurrency">
+    </div>
+    </div>
+
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Free Item!
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success">List Item</button>
+</form>
 </div>
+
+
 <script src="{{static_url('js/jquery.js')}}"></script>
 <script src="{{static_url('js/dropzone.min.js')}}"></script>
 <script src="{{static_url('js/dropzone-amd-module.min.js')}}"></script>
