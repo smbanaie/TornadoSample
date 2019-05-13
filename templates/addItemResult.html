@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Add Item Result</title>
+<link href='{{ static_url("css/bootstrap.css") }}' rel="stylesheet">
+<link href='{{ static_url("css/bootstrap-theme.css") }}' rel="stylesheet">
+    <link href='{{ static_url("css/dropzone.css") }}' rel="stylesheet"></head>
+<style>
+    .spacer { margin:0; padding:0; height:75px; }
+</style>
+<body>
+<div class="spacer"></div>
+
+<div class="row col-md-8 col-md-offset-2">
+<div class="alert alert-warning">
+
+    <b>Item Sucessfully Added :</b><a href='{{itemDetails["ListingDetails"]["ViewItemURL"]}}' target="_blank"> {{itemDetails["Title"]}} </a>
+    <br/><b>Category : </b> {{itemDetails["PrimaryCategory"]["CategoryName"]}}
+    <br/><br/>
+    <a href="/" class = "btn btn-success" >Back To Main Page</a>
+
+
+</div>
+</div>
+</body>
+</html>

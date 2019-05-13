@@ -49,12 +49,19 @@ request = {
                 "ShippingServiceOptions": {
                     # "FreeShipping": "True",
                      "ShippingServiceCost": 12.50 ,
-                    "ShippingService": "USPSMedia"
+                    "ShippingService": "USPSMedia",
+                    "ShippingServiceAdditionalCost":0.00
                 }
             },
             "DispatchTimeMax": "3"
         }
     }
+
+
+def getItemDetails(ItemID):
+    response = api.execute("GetItem", {"ItemID": ItemID})
+    return response.dict()["Item"]
+
 
 if __name__ =="__main__" :
     response = api.execute('AddItem', request)

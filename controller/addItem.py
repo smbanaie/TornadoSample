@@ -33,8 +33,10 @@ class AddItemHandler(tornado.web.RequestHandler):
         request["Item"]["PayPalEmailAddress"] = PayPalEmailAddress
         request["Item"]["StartPrice"] = Price
         request["Item"]["Currency"] = Currency
-        response = api.execute('AddItem', request)
-        dictstr = response.dict()
-        self.write(dictstr)
-        # self.render('addItem.html', roads=noun1, wood=noun2, made=verb,difference=noun3)
+        # response = api.execute('AddItem', request)
+        # dictstr = response.dict()
+        # itemDetails=getItemDetails(dictstr["ItemID"])
+        itemDetails=getItemDetails("110403338122")
+        # self.write(dictstr)
+        self.render('addItemResult.html', itemDetails=itemDetails)
 
