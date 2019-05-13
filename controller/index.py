@@ -19,7 +19,7 @@ class IndexHandler(tornado.web.RequestHandler):
         ####################################################################
         itemList = getItems()
 
-        self.render('index.html',UN="U Are Already Logged In..",Items=itemList)#Global =GlobalVars)
+        self.render('index.html',Items=itemList)
 
 
 

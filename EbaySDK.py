@@ -71,6 +71,11 @@ def getItems():
     dictstr = response.dict()
     return dictstr["ItemArray"]["Item"]
 
+def endItem(ItemID):
+    response = api.execute("EndItem", {"ItemID": ItemID, "EndingReason": "NotAvailable"})
+    return  response.dict()
+
+
 if __name__ =="__main__" :
     response = api.execute('AddItem', request)
     dictstr = response.dict()

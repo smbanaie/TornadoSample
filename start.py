@@ -10,11 +10,13 @@ import tornado.web
 from tornado.options import define, options
 from controller.index import IndexHandler
 from controller.addItem import AddItemHandler
+from controller.deleteItem import DeleteItemHandler
 
-define("port", default=8080, help="run on the given port", type=int)
+define("port", default=8000, help="run on the given port", type=int)
 
 urlPattern = [(r'/$',    IndexHandler),
-    (r'/addItem', AddItemHandler)]
+    (r'/addItem', AddItemHandler),
+    (r'/deleteItem',DeleteItemHandler)]
 
     # Your app launch code here..
 
