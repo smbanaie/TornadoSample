@@ -64,13 +64,20 @@ def getItemDetails(ItemID):
     return response.dict()["Item"]
 
 def getItems():
-    response = api.execute("GetSellerList", {"StartTimeFrom": datetime.date.today() + relativedelta(months=-3),
-                                             "StartTimeTo" : datetime.date.today().isoformat(),
+    response = api.execute("GetSellerList", {"StartTimeFrom": datetime.date.today().isoformat() ,
+                                             "StartTimeTo" : datetime.date.today()+ relativedelta(months=+3),
                                              "DetailLevel" : "ReturnAll",
                                              "Pagination" : { "EntriesPerPage":50 ,"PageNumber" :1 }})
     dictstr = response.dict()
     return dictstr["ItemArray"]["Item"]
 
+def getMyEbayItems():
+    response = api.execute("GetMyeBaySelling", {"ActiveList": {"Include":True,
+                                                              "IncludeNotes":True ,
+
+                                                              }})
+    dictstr = response.dict()
+    return dictstr["ActiveList"]["ItemArray"]["Item"]
 def endItem(ItemID):
     response = api.execute("EndItem", {"ItemID": ItemID, "EndingReason": "NotAvailable"})
     return  response.dict()

@@ -15,10 +15,11 @@
 <div class="row">
 <div class="row col-md-8 col-md-offset-2">
   <br/>
-<a class="btn btn-warning" href="/addItem">List New Product</a>
+<a class="btn btn-warning" href="/addItem">List New Product</a>&nbsp;&nbsp;
+<a class="btn btn-warning" href="https://my.sandbox.ebay.com/ws/eBayISAPI.dll?MyEbayBeta&gbh=1&CurrentPage=MyeBayAllSelling&ssPageName=STRK:ME:LNLK:MESX">View User Item List</a>
 </div>
 <div class="row col-md-8 col-md-offset-2">
-  <h4>Items Listed on Ebay Sandbox by  testuser_mojtaba  : </h4>
+    <h4>Items Listed on Ebay Sandbox by  <b>USER : </b>testuser_mojtaba <b>PASSWORD : </b>odiF2t11# : </h4>
 <table class="table table-striped table-bordered">
  <thead class="blackHead">
             <tr>
@@ -36,7 +37,7 @@
           <td>{{ cnt  }}</td>
             <td>{{Item["ItemID"]}}</td>
             <td><a target="_blank" href='http://{{Item["ListingDetails"]["ViewItemURL"][7:]}}'>{{Item["Title"]}}</td>
-          <td style="text-align:center"><a href="/deleteItem?ItemID={{Item["ItemID"]}}"><span class="glyphicon glyphicon-trash"></span></a><span class="glyphicon glyphicon-edit" style="margin-left:10px"></span><span class="glyphicon glyphicon-eye-open" style="margin-left:10px"></span></td>
+          <td style="text-align:center"><a href='/deleteItem?ItemID={{Item["ItemID"]}}'><span class="glyphicon glyphicon-trash"></span></a><span class="glyphicon glyphicon-edit" style="margin-left:10px"></span><span class="glyphicon glyphicon-eye-open" style="margin-left:10px"></span></td>
         </tr>
   {% set cnt=cnt+1 %}
   {% end %}

@@ -14,5 +14,4 @@ class DeleteItemHandler(tornado.web.RequestHandler):
             self.write(dictstr)
             self.finish()
         else :
-            itemList = getItems()
-            self.render('index.html', Items=itemList)
+            self.redirect('/')

@@ -20,6 +20,12 @@ class AddItemHandler(tornado.web.RequestHandler):
         Brand = self.get_argument('inputBtrand')
         Price = self.get_argument('inputPrice')
         Currency = self.get_argument('inputCurrency')
+        try :
+            FreeShipping = self.get_argument('freeShipping')
+        except:
+            FreeShipping  = "False"
+        ShippingCost = self.get_argument('shippingCost')
+        ShippingAdditionalCost = self.get_argument('shippingAdditionalCost')
 
         request["Item"]["Title"] = Title
         request["Item"]["ConditionID"] = Condition
@@ -33,6 +39,14 @@ class AddItemHandler(tornado.web.RequestHandler):
         request["Item"]["PayPalEmailAddress"] = PayPalEmailAddress
         request["Item"]["StartPrice"] = Price
         request["Item"]["Currency"] = Currency
+        if FreeShipping=="True":
+            request["Item"]["ShippingDetails"]["ShippingServiceOptions"]["FreeShipping"] = "True"
+            del request["Item"]["ShippingDetails"]["ShippingServiceOptions"]["ShippingServiceCost"]
+
+        else :
+            request["Item"]["ShippingDetails"]["ShippingServiceOptions"]["ShippingServiceCost"] = ShippingCost
+            request["Item"]["ShippingDetails"]["ShippingServiceOptions"]["ShippingServiceAdditionalCost"]\
+                = ShippingAdditionalCost
         response = api.execute('AddItem', request)
         dictstr = response.dict()
         if dictstr["Ack"] == "Error" :

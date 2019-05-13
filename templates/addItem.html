@@ -48,7 +48,7 @@
     </div>
     <div class="form-group col-md-6">
       <label for="inputPayPalEmailAddress">PayPal Email Address</label>
-      <input type="email" class="form-control" id="inputPayPalEmailAddress" name="inputPayPalEmailAddress">
+      <input type="email" class="form-control" id="inputPayPalEmailAddress" name="inputPayPalEmailAddress" value="test@nowhere.com">
     </div>
     </div>
   <div class="form-row">
@@ -62,7 +62,7 @@
     </div>
     <div class="form-group col-md-6">
       <label for="inputQuantity">Quantity</label>
-      <input type="number" class="form-control" id="inputQuantity" name="inputQuantity">
+      <input type="number" class="form-control" id="inputQuantity" name="inputQuantity" value="1">
     </div>
     </div>
 
@@ -86,21 +86,33 @@
     </div>
     <div class="form-group col-md-6">
       <label for="inputCurrency">Currency</label>
-      <input type="text" class="form-control" id="inputCurrency" name="inputCurrency">
+      <select id="inputCurrency" name="inputCurrency" class="form-control">
+        <option  selected>USD</option>
+        <option >AUD</option>
+        <option >...</option>
+      </select>
     </div>
     </div>
-
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Free Item!
-      </label>
+<div class="form-row">
+    <div class="form-group col-md-6">
+       <label for="shippingCost">Shipping Cost</label>
+      <input type="text" id="shippingCost" name="shippingCost" class="form-control" value="12.5">
     </div>
-  </div>
-  <button type="submit" class="btn btn-success">List Item</button>
-</form>
+  <div class="form-group col-md-6">
+       <label for="shippingAdditionalCost">Shipping Additional Cost</label>
+      <input type="text" id="shippingAdditionalCost" name="shippingAdditionalCost" class="form-control" value="0">
+    </div>
 </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="freeShipping" name="freeShipping" value="True">
+    <label class="form-check-label" for="freeShipping">Free Shipping!</label>
+  </div>
+
+  <div class="form-row">
+  <button type="submit" class="btn btn-lg btn-success">List Item</button>
+  </div>
+</form>
+
 
 
 <script src="{{static_url('js/jquery.js')}}"></script>
