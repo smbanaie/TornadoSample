@@ -7,6 +7,7 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
+from EbaySDK import *
 
 
 
@@ -16,7 +17,9 @@ class IndexHandler(tornado.web.RequestHandler):
         # id = self.application.db.entry.find_one({"_id": 434344})
         # GlobalVars = self.application.GlobalVar
         ####################################################################
-        self.render('index.html',UN="U Are Already Logged In..")#Global =GlobalVars)
+        itemList = getItems()
+
+        self.render('index.html',UN="U Are Already Logged In..",Items=itemList)#Global =GlobalVars)
 
 
 

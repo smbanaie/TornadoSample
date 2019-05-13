@@ -4,15 +4,30 @@
 <link href='{{ static_url("css/bootstrap.css") }}' rel="stylesheet">
 <link href='{{ static_url("css/bootstrap-theme.css") }}' rel="stylesheet">
   <link href='{{ static_url("css/dropzone.css") }}' rel="stylesheet">
-
+<style>
+    .spacer { margin:0; padding:0; height:75px; }
+</style>
 </head>
 <body>
 <br/>
+
+<div class="spacer"></div>
+<div class="row col-md-8 col-md-offset-2">
+<table class="table">
+
+{% for Item in Items %}
+        <tr>
+            <td>{{Item["ItemID"]}}</td>
+            <td>{{Item["Title"]}}</td>
+
+        </tr>
+  {% end %}
+  </table>
+</div>
+<div class="spacer"></div>
 <div class="row">
 <h3 class="col-md-8 col-md-offset-2">Enter Product info :</h3>
   </div>
-
-
 <div class="row col-md-8 col-md-offset-2">
 <form class="form-group" method="post" action="/addItem">
   <div class="form-row">
