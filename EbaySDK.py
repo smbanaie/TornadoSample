@@ -60,7 +60,7 @@ request = {
 
 
 def getItemDetails(ItemID):
-    response = api.execute("GetItem", {"ItemID": ItemID})
+    response = api.execute("GetItem", {"ItemID": ItemID,'IncludeItemSpecifics' : True,"DetailLevel" : "ReturnAll"})
     return response.dict()["Item"]
 
 def getItems():

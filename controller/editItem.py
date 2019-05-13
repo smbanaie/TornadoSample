@@ -7,9 +7,10 @@ import tornado.web
 from EbaySDK import *
 
 
-class AddItemHandler(tornado.web.RequestHandler):
+class EditItemHandler(tornado.web.RequestHandler):
     def post(self):
         Title = self.get_argument('inputTitle')
+        ItemID = self.get_argument('itemID')
         Condition = self.get_argument('inputCondition')
         Description = self.get_argument('inputDescription')
         ListingType = self.get_argument('inputListingType')
@@ -39,6 +40,7 @@ class AddItemHandler(tornado.web.RequestHandler):
         request["Item"]["PayPalEmailAddress"] = PayPalEmailAddress
         request["Item"]["StartPrice"] = Price
         request["Item"]["Currency"] = Currency
+        request["Item"]["ItemID"] = ItemID
         if FreeShipping=="True":
             request["Item"]["ShippingDetails"]["ShippingServiceOptions"]["FreeShipping"] = "True"
             del request["Item"]["ShippingDetails"]["ShippingServiceOptions"]["ShippingServiceCost"]
@@ -47,16 +49,16 @@ class AddItemHandler(tornado.web.RequestHandler):
             request["Item"]["ShippingDetails"]["ShippingServiceOptions"]["ShippingServiceCost"] = ShippingCost
             request["Item"]["ShippingDetails"]["ShippingServiceOptions"]["ShippingServiceAdditionalCost"]\
                 = ShippingAdditionalCost
-        response = api.execute('AddItem', request)
+        response = api.execute('ReviseItem', request)
         dictstr = response.dict()
         if dictstr["Ack"] == "Error" :
             self.write(dictstr)
             self.finish()
         else :
-            itemDetails=getItemDetails(dictstr["ItemID"])
-            # itemDetails=getItemDetails("110403338122")
-            # self.write(dictstr)
-            self.render('addItemResult.html', itemDetails=itemDetails)
+            self.redirect("/")
     def get(self):
-        self.render('addItem.html' , Edit=False,ItemID = "",ItemDetails="")
+        ItemID = self.get_argument('ItemID')
+        ItemDetails= getItemDetails(ItemID)
+
+        self.render('addItem.html' , Edit=True,ItemID = ItemID,ItemDetails=ItemDetails)
 
