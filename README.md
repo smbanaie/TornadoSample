@@ -14,3 +14,7 @@ to view the landing page.
 
 **Hint :** you can set the port number in `Start.py`
 
+### Add Item Flow : 
+
+This app is based on the tips provided at [this address](https://developer.ebay.com/devzone/xml/docs/howto/XML_ListingAndSelling/ListingAndSelling_listing.html).
+
