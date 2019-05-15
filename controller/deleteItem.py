@@ -1,10 +1,8 @@
 __author__ = 'mojtaba.banaie'
 
-import tornado.httpserver
-import tornado.ioloop
-import tornado.options
 import tornado.web
-from EbaySDK import *
+from EbayHelper import *
+
 
 class DeleteItemHandler(tornado.web.RequestHandler):
     def get(self):

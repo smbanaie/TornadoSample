@@ -71,6 +71,7 @@ def getItems():
     dictstr = response.dict()
     return dictstr["ItemArray"]["Item"]
 
+
 def getMyEbayItems():
     response = api.execute("GetMyeBaySelling", {"ActiveList": {"Include":True,
                                                               "IncludeNotes":True ,
@@ -78,9 +79,17 @@ def getMyEbayItems():
                                                               }})
     dictstr = response.dict()
     return dictstr["ActiveList"]["ItemArray"]["Item"]
+
+
 def endItem(ItemID):
     response = api.execute("EndItem", {"ItemID": ItemID, "EndingReason": "NotAvailable"})
     return  response.dict()
+
+
+def uploadImage(url, desc):
+    response = api.execute("UploadSiteHostedPictures", {"ExternalPictureURL": url, "PictureName": desc})
+    dictstr = response.dict()
+    return dictstr["SiteHostedPictureDetails"]["FullURL"]
 
 
 if __name__ =="__main__" :

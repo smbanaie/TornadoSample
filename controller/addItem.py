@@ -4,7 +4,7 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
-from EbaySDK import *
+from EbayHelper import *
 
 
 class AddItemHandler(tornado.web.RequestHandler):
@@ -18,6 +18,8 @@ class AddItemHandler(tornado.web.RequestHandler):
         Quantity = self.get_argument('inputQuantity')
         Manufacturer = self.get_argument('inputManufacturer')
         Brand = self.get_argument('inputBrand')
+        PictureURL = self.get_argument('inputPictureURL')
+        PictureName = self.get_argument('inputPictureName')
         Price = self.get_argument('inputPrice')
         Currency = self.get_argument('inputCurrency')
         try :
@@ -26,6 +28,18 @@ class AddItemHandler(tornado.web.RequestHandler):
             FreeShipping  = "False"
         ShippingCost = self.get_argument('shippingCost')
         ShippingAdditionalCost = self.get_argument('shippingAdditionalCost')
+
+        # Upload The Picture and Get the Internal Image Address
+        if len(PictureURL) > 0:
+            try :
+                PictureFullURL= uploadImage(PictureURL, PictureName)
+                request["Item"]["PictureDetails "]= {"PictureURL" : PictureFullURL}
+            except :
+                try :
+                    PictureFullURL = uploadImage(PictureURL, PictureName)
+                    request["Item"]["PictureDetails "] = {"PictureURL": PictureFullURL}
+                except :
+                    pass
 
         request["Item"]["Title"] = Title
         request["Item"]["ConditionID"] = Condition

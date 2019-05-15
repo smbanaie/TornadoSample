@@ -7,7 +7,7 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
-from EbaySDK import *
+from EbayHelper import *
 
 
 
